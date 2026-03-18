@@ -1,0 +1,142 @@
+/* ─── TaskCard (BEM) ─────────────────────────────────────────────────────────── */
+
+.task-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  box-shadow: var(--shadow-sm);
+  transition: box-shadow 0.2s, transform 0.2s, opacity 0.15s;
+}
+
+.task-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-1px);
+}
+
+/* ─── Handle de arrastre ─────────────────────────────────────────────────────── */
+.task-card__drag-handle {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-sm);
+  color: var(--color-text-light);
+  opacity: 0;
+  cursor: grab;
+  transition: opacity 0.15s, background-color 0.15s, color 0.15s;
+}
+
+.task-card {
+  position: relative;
+}
+
+.task-card:hover .task-card__drag-handle {
+  opacity: 1;
+}
+
+.task-card__drag-handle:hover {
+  background-color: var(--color-bg);
+  color: var(--color-text-muted);
+}
+
+.task-card__drag-handle:active {
+  cursor: grabbing;
+}
+
+/* ─── Estado dragging (placeholder en columna origen) ────────────────────────── */
+.task-card--dragging {
+  opacity: 0.35;
+  box-shadow: none;
+  transform: none !important;
+}
+
+/* ─── Overlay (clon que sigue al cursor) ─────────────────────────────────────── */
+.task-card--drag-overlay {
+  box-shadow: var(--shadow-lg);
+  cursor: grabbing;
+  transform: rotate(1.5deg);
+}
+
+/* ─── Cuerpo ─────────────────────────────────────────────────────────────────── */
+.task-card__body {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.task-card__title {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--color-text);
+  line-height: 1.4;
+  word-break: break-word;
+}
+
+.task-card__description {
+  font-size: 13px;
+  color: var(--color-text-muted);
+  line-height: 1.5;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: break-word;
+}
+
+/* ─── Pie ────────────────────────────────────────────────────────────────────── */
+.task-card__footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 8px;
+  border-top: 1px solid var(--color-border);
+}
+
+.task-card__date {
+  font-size: 11px;
+  color: var(--color-text-light);
+}
+
+/* ─── Acciones ───────────────────────────────────────────────────────────────── */
+.task-card__actions {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.task-card__btn {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.task-card__btn--edit {
+  color: var(--color-text-muted);
+}
+
+.task-card__btn--edit:hover {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary);
+}
+
+.task-card__btn--delete {
+  color: var(--color-text-muted);
+}
+
+.task-card__btn--delete:hover {
+  background-color: var(--color-destructive-light);
+  color: var(--color-destructive);
+}
