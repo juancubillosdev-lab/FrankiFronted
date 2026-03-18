@@ -1,0 +1,204 @@
+/* ─── App (BEM) ───────────────────────────────────────────────────────────────── */
+
+.app {
+  display: flex;
+  height: 100vh;
+  overflow: hidden;
+  background-color: var(--color-bg);
+}
+
+/* ─── Contenido principal ────────────────────────────────────────────────────── */
+.app__main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  overflow: hidden;
+}
+
+/* ─── Cabecera de página ─────────────────────────────────────────────────────── */
+.app__header {
+  padding: 28px 32px 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+
+.app__heading {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.app__title {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.app__subtitle {
+  font-size: 13px;
+  color: var(--color-text-muted);
+}
+
+.app__add-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 9px 18px;
+  background-color: var(--color-primary);
+  color: #ffffff;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.15s;
+  white-space: nowrap;
+}
+
+.app__add-btn:hover {
+  background-color: var(--color-primary-hover);
+}
+
+/* ─── Tablero Kanban ─────────────────────────────────────────────────────────── */
+.app__board {
+  flex: 1;
+  display: flex;
+  gap: 20px;
+  padding: 24px 32px 32px;
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+/* ─── Progress bar ───────────────────────────────────────────────────────────── */
+.app__progress {
+  padding: 20px 32px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.app__progress-bar {
+  height: 8px;
+  background-color: var(--color-border);
+  border-radius: 100px;
+  overflow: hidden;
+  display: flex;
+}
+
+.app__progress-segment {
+  height: 100%;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.app__progress-segment--completed { background-color: var(--color-completed); }
+.app__progress-segment--progress  { background-color: var(--color-progress);  }
+
+.app__progress-stats {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.app__progress-stat {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  color: var(--color-text-muted);
+}
+
+.app__progress-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.app__progress-stat--completed .app__progress-dot { background-color: var(--color-completed); }
+.app__progress-stat--progress  .app__progress-dot { background-color: var(--color-progress);  }
+.app__progress-stat--pending   .app__progress-dot { background-color: var(--color-text-light); }
+
+.app__progress-pct {
+  margin-left: auto;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+/* ─── Estado de carga ────────────────────────────────────────────────────────── */
+.app__loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  gap: 16px;
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.app__spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-primary);
+  border-radius: 50%;
+  animation: spin 0.7s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ─── Error global ───────────────────────────────────────────────────────────── */
+.app__error-banner {
+  margin: 20px 32px 0;
+  background-color: var(--color-destructive-light);
+  color: var(--color-destructive);
+  font-size: 13px;
+  padding: 12px 16px;
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--color-destructive);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.app__error-retry {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--color-destructive);
+  text-decoration: underline;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+/* ─── Responsive ─────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .app__board {
+    padding: 16px;
+    gap: 14px;
+    flex-direction: column;
+  }
+
+  .app__header {
+    padding: 20px 16px 0;
+  }
+
+  .app__progress {
+    padding: 16px 16px 0;
+  }
+
+  .app__progress-pct {
+    margin-left: 0;
+  }
+
+  .app__add-btn {
+    font-size: 13px;
+    padding: 8px 14px;
+  }
+}
